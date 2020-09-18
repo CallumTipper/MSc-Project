@@ -51,16 +51,24 @@ def post_q():
         "tutor": tutor
     }
 
-    global ans
     ans.append(q.copy())
     return render_template("student.html", ans = ans)
 
 @app.route('/tutor')
 def tutor():
-    return render_template("tutor.html")
+    return render_template("tutor.html", ans = ans)
 
-def send():
-    pass
+@app.route('/tutor', methods=['POST'])
+def post_a():
+    answer = request.form.get('answer')
+    q_id = request.form.get('id')
+    q_id = int(q_id)
+
+    for i in ans:
+        if i['id'] == q_id:
+            i['answer'] = answer
+    
+    return render_template('tutor.html', ans = ans)
 
 if __name__ == "__main__":
     app.run()

@@ -1,4 +1,4 @@
-console.log("hello js")
+console.log("hello student js")
 
 var studentid = null
 
@@ -13,7 +13,7 @@ function showForm(){
   
     button = document.getElementById("add-button")
     button.onclick = hideForm
-    button.innerHTML = "Hide Form"
+    button.innerHTML = "Cancel"
 }
 
 function hideForm(){

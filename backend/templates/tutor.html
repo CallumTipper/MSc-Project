@@ -18,7 +18,18 @@
                    <div class="asked" id={{question.id}}>
                         <h3>{{question.number}} - {{question.section}}</h3>
                         <h4>{{question.question}}</h4>
-                        <button>Answer This Question</button>
+                        <button id="add-button" onclick="showForm()">
+                            Answer This Question
+                        </button>
+                        <form id="Aform-hidden" method="POST" action="" style="display: none;">
+                            <h2>Add Answer</h2>
+                            <div class="answer">
+                                <label for="answer">Answer</label>
+                                <input type="text" id="answer" name="answer">
+                                <input type = "hidden" name = "id" value ={{question.id}} />
+                            </div>
+                            <button type="submit">Submit</button>
+                        </form>
                    </div>
                 {% endfor %}
                
@@ -29,6 +40,7 @@
                    <div class="asked" id={{question.id}}>
                         <h3>{{question.number}} - {{question.section}}</h3>
                         <h4>{{question.question}}</h4>
+                        <h4>{{question.answer}}</h4>
                    </div>
                 {% endfor %}
             </div>
