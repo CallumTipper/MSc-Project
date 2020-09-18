@@ -10,12 +10,33 @@
     <div class="root">
         <h1>TUTOR:    This is the tutor</h1>
         
+
+        <div class="main">
+            <div class="un-ans">
+                <h2>Asked Questions</h2>
+                {% for question in ans if not question.answer %}
+                   <div class="asked" id={{question.id}}>
+                        <h3>{{question.number}} - {{question.section}}</h3>
+                        <h4>{{question.question}}</h4>
+                        <button>Answer This Question</button>
+                   </div>
+                {% endfor %}
+               
+            </div>
+            <div class="ans">
+                <h2>Answered Questions</h2>
+                {% for question in ans if question.answer %}
+                   <div class="asked" id={{question.id}}>
+                        <h3>{{question.number}} - {{question.section}}</h3>
+                        <h4>{{question.question}}</h4>
+                   </div>
+                {% endfor %}
+            </div>
+        </div>
+
         <button onclick="window.location.href='{{link}}/';">
             Back
         </button>
     </div>
-
-
-
 </body>
 </html> 

@@ -1,5 +1,11 @@
 console.log("hello js")
 
+var studentid = null
+
+// document.onload(function(){
+//     studentid = 
+// })
+
 function showForm(){
     var Qform = document.getElementById("Qform-hidden")
     Qform.style.display = "block"
