@@ -1,0 +1,69 @@
+/* 
+orng = #EDC7B7
+whte = #EEE2DC
+gry = #BAB2B5
+blu = #123C69
+pink = #AC3B61 
+*/
+
+
+body {
+    background-color: #EEE2DC;
+    min-height: 100%;
+}
+
+/* Buttons */
+button {
+    padding: 15px;
+    margin: 5px;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #BAB2B5;
+}
+
+.submit {
+    background-color: #EDC7B7;
+    color: #837b7e
+}
+
+.back {
+    background-color: #EDC7B7;
+    color: #837b7e
+}
+
+.login-button {
+    text-align: center;
+    margin: 5%;
+    padding: 5%;
+    font-size: 50px;
+    width:25%;    
+}
+
+.login-button.tutor {
+    margin-left: 20%;
+    background-color: #123C69;
+    color: #EEE2DC;
+}
+
+.login-button.student {
+    background-color: #AC3B61 ;
+    color: #EEE2DC;
+}
+
+/* Hover buttons */
+button:hover{
+    background-color: #EEE2DC;
+} 
+
+.login-button:hover{
+    background-color: #EEE2DC;
+    color: #837b7e
+}
+
+/* //////////////////////////////////////// */
+
+/* Forms */
+
+form {
+    text-align: center;
+}

@@ -1,62 +1,62 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Student</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
-    <script type="text/javascript"
-         src="{{ url_for('static', filename='student.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='student.js') }}"></script>
 </head>
+
 <body>
-    <div class="root">
-        <h1>STUDENT:    This is the studnet</h1>
-        <button id="add-button" onclick="showForm()">
-            Add Question
-        </button>
-        <form id="Qform-hidden" method="POST" action="" style="display: none;">
-            <h2>Ask a Question</h2>
-            <div class="number">
-                <label for="number">Question Number</label>
-                <input type="text" id="number" name="number">
-            </div>
-            <div class="section">
-                <label for="section">Question Section</label>
-                <input type="text" id="section" name="section">
-            </div>
-            <div class="question">
-                <label for="question">Question</label>
-                <input type="text" id="question" name="question">
-            </div>
-            <button type="submit">Submit</button>
-        </form>
-        <div class="main">
-            <div class="un-ans">
-                <h2>Asked Questions</h2>
-                {% for question in ans if not question.answer %}
-                   <div class="asked" id={{question.id}}>
-                        <h3>{{question.number}} - {{question.section}}</h3>
-                        <h4>{{question.question}}</h4>
-                   </div>
-                {% endfor %}
-               
-            </div>
-            <div class="ans">
-                <h2>Answered Questions</h2>
-                {% for question in ans if question.answer %}
-                   <div class="asked" id={{question.id}}>
-                        <h3>{{question.number}} - {{question.section}}</h3>
-                        <h4>{{question.question}}</h4>
-                        <h4>{{question.answer}}</h4>
-                   </div>
-                {% endfor %}
-            </div>
+    <h1>STUDENT: This is the studnet</h1>
+    <button class="submit" id="add-button" onclick="showForm()">
+        Add Question
+    </button>
+    <form id="Qform-hidden" method="POST" action="" style="display: none;">
+        <h2>Ask a Question</h2>
+        <div class="number">
+            <label for="number">Question Number</label>
+            <input type="text" id="number" name="number">
         </div>
+        <div class="section">
+            <label for="section">Question Section</label>
+            <input type="text" id="section" name="section">
+        </div>
+        <div class="question">
+            <label for="question">Question</label>
+            <input type="text" id="question" name="question">
+        </div>
+        <button class="submit" type="submit">Submit</button>
+    </form>
+    <div class="main">
+        <div class="un-ans">
+            <h2>Asked Questions</h2>
+            {% for question in ans if not question.answer %}
+            <div class="asked" id={{question.id}}>
+                <h3>{{question.number}} - {{question.section}}</h3>
+                <h4>{{question.question}}</h4>
+            </div>
+            {% endfor %}
 
-
-
-        
-        <button onclick="window.location.href='{{link}}/';">
-            Back
-        </button>
+        </div>
+        <div class="ans">
+            <h2>Answered Questions</h2>
+            {% for question in ans if question.answer %}
+            <div class="asked" id={{question.id}}>
+                <h3>{{question.number}} - {{question.section}}</h3>
+                <h4>{{question.question}}</h4>
+                <h4>{{question.answer}}</h4>
+            </div>
+            {% endfor %}
+        </div>
     </div>
+
+
+
+
+    <button class="back" onclick="window.location.href='{{link}}/';">
+        Back
+    </button>
 </body>
-</html> 
+
+</html>

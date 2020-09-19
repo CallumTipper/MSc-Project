@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
-    <script type="text/javascript"
-         src="{{ url_for('static', filename='index.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
 </head>
+
 <body>
 
-    <button onclick="window.location.href='{{link}}/tutor';">
+    <button class="login-button tutor" onclick="window.location.href='{{link}}/tutor';">
         Tutor
-      </button>
-    <button onclick="window.location.href='{{link}}/student';">
+    </button>
+    <button class="login-button student" onclick="window.location.href='{{link}}/student';">
         Student
     </button>
 
 
 </body>
-</html> 
+
+</html>

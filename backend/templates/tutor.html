@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Tutor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
-    <script type="text/javascript"
-         src="{{ url_for('static', filename='tutor.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='tutor.js') }}"></script>
 </head>
+
 <body>
-    <div class="root">
-        <h1>TUTOR:    This is the tutor</h1>
-        
+    <h1>TUTOR: This is the tutor</h1>
 
-        <div class="main">
-            <div class="un-ans">
-                <h2>Asked Questions</h2>
-                {% for question in ans if not question.answer %}
-                   <div class="asked" id={{question.id}}>
-                        <h3>{{question.number}} - {{question.section}}</h3>
-                        <h4>{{question.question}}</h4>
-                        <button id="add-button" onclick="showForm()">
-                            Answer This Question
-                        </button>
-                        <form id="Aform-hidden" method="POST" action="" style="display: none;">
-                            <h2>Add Answer</h2>
-                            <div class="answer">
-                                <label for="answer">Answer</label>
-                                <input type="text" id="answer" name="answer">
-                                <input type = "hidden" name = "id" value ={{question.id}} />
-                            </div>
-                            <button type="submit">Submit</button>
-                        </form>
-                   </div>
-                {% endfor %}
-               
+
+    <div class="main">
+        <div class="un-ans">
+            <h2>Asked Questions</h2>
+            {% for question in ans if not question.answer %}
+            <div class="asked" id={{question.id}}>
+                <h3>{{question.number}} - {{question.section}}</h3>
+                <h4>{{question.question}}</h4>
+                <button id="add-button" onclick="showForm()">
+                    Answer This Question
+                </button>
+                <form id="Aform-hidden" method="POST" action="" style="display: none;">
+                    <h2>Add Answer</h2>
+                    <div class="answer">
+                        <label for="answer">Answer</label>
+                        <input type="text" id="answer" name="answer">
+                        <input type="hidden" name="id" value={{question.id}} />
+                    </div>
+                    <button class="submit" type="submit">Submit</button>
+                </form>
             </div>
-            <div class="ans">
-                <h2>Answered Questions</h2>
-                {% for question in ans if question.answer %}
-                   <div class="asked" id={{question.id}}>
-                        <h3>{{question.number}} - {{question.section}}</h3>
-                        <h4>{{question.question}}</h4>
-                        <h4>{{question.answer}}</h4>
-                   </div>
-                {% endfor %}
-            </div>
+            {% endfor %}
+
         </div>
-
-        <button onclick="window.location.href='{{link}}/';">
-            Back
-        </button>
+        <div class="ans">
+            <h2>Answered Questions</h2>
+            {% for question in ans if question.answer %}
+            <div class="asked" id={{question.id}}>
+                <h3>{{question.number}} - {{question.section}}</h3>
+                <h4>{{question.question}}</h4>
+                <h4>{{question.answer}}</h4>
+            </div>
+            {% endfor %}
+        </div>
     </div>
+
+    <button class="back" onclick="window.location.href='{{link}}/';">
+        Back
+    </button>
 </body>
-</html> 
+
+</html>
