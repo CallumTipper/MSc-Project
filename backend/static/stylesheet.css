@@ -10,6 +10,17 @@ pink = #AC3B61
 body {
     background-color: #EEE2DC;
     min-height: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Title */
+
+.student-title {
+    color: #AC3B61;
+}
+
+.tutor-title {
+    color: #123C69;
 }
 
 /* Buttons */
@@ -50,15 +61,30 @@ button {
     color: #EEE2DC;
 }
 
+.tutor-answer{
+    background-color: #EEE2DC;
+}
+
 /* Hover buttons */
 button:hover{
     background-color: #EEE2DC;
 } 
 
-.login-button:hover{
-    background-color: #EEE2DC;
-    color: #837b7e
+.login-button.tutor:hover{
+    background-color: #134a85;
+    
 }
+
+.login-button.student:hover{
+    background-color: #d34e7a;
+    
+}
+
+.tutor-answer:hover{
+    background-color: white;
+}
+
+
 
 /* //////////////////////////////////////// */
 
@@ -67,3 +93,49 @@ button:hover{
 form {
     text-align: center;
 }
+
+/* /////////////////////////////////////// */
+
+/* Cards */
+
+.main {
+    text-align: center;
+    width: 100%;
+    min-height: 500px;
+}
+
+.un-ans {
+    width: 50%;
+    float: left;
+}
+
+.ans {
+    width: 50%;
+    float: right;
+}
+
+.asked {
+    position: relative;
+    font-size: 12px;
+    background-color: #EDC7B7;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+h3 {
+    position: absolute;
+    top: 2px;
+    left: 9px;
+}
+
+h4 {
+    padding: 15px;
+}
+
+h4:nth-child(3){
+    background-color:#EEE2DC;
+    border-radius: 5px;
+    color: #837b7e;
+}
+

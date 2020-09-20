@@ -8,9 +8,7 @@
 </head>
 
 <body>
-    <h1>TUTOR: This is the tutor</h1>
-
-
+    <h1 class="tutor-title">TUTOR: This is the tutor</h1>
     <div class="main">
         <div class="un-ans">
             <h2>Asked Questions</h2>
@@ -18,7 +16,7 @@
             <div class="asked" id={{question.id}}>
                 <h3>{{question.number}} - {{question.section}}</h3>
                 <h4>{{question.question}}</h4>
-                <button id="add-button" onclick="showForm()">
+                <button class="tutor-answer" id="add-button" onclick="showForm()">
                     Answer This Question
                 </button>
                 <form id="Aform-hidden" method="POST" action="" style="display: none;">
