@@ -16,10 +16,10 @@
             <div class="asked" id={{question.id}}>
                 <h3>{{question.number}} - {{question.section}}</h3>
                 <h4>{{question.question}}</h4>
-                <button class="tutor-answer" id="add-button" onclick="showForm()">
+                <button class="tutor-answer" id="add-button-{{question.id}}" onclick="showForm({{question.id}})">
                     Answer This Question
                 </button>
-                <form id="Aform-hidden" method="POST" action="" style="display: none;">
+                <form id="Aform-hidden-{{question.id}}" method="POST" action="" style="display: none;">
                     <h2>Add Answer</h2>
                     <div class="answer">
                         <label for="answer">Answer</label>
