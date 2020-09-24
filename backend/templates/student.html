@@ -4,6 +4,9 @@
 <head>
     <title>Student</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+
+    <script src="https://kit.fontawesome.com/4e4198aadc.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='student.js') }}"></script>
 </head>
 
@@ -34,25 +37,34 @@
             {% for question in ans if not question.answer %}
             <div class="asked" id={{question.id}}>
                 <h3>{{question.number}} - {{question.section}}</h3>
-                <h4>{{question.question}}</h4>
+                
+                <div class="question">
+                    <h4>{{question.question}}</h4>
+                    <span class="fa-stack" onclick="vote({{question.id}})">
+                        <!-- The icon that will wrap the number -->
+                        <span id="{{question.id}}-flag" class="fas fa-flag fa-lg fa-stack-2x"></span>
+                        <!-- a strong element with the custom content, in this case a number -->
+                        <strong class="fa-stack-1x" style="font-size:80%;">
+                            {{question.votes}}
+                        </strong>
+                    </span>
+                </div>                
             </div>
             {% endfor %}
-
         </div>
+            
+
         <div class="ans">
             <h2>Answered Questions</h2>
             {% for question in ans if question.answer %}
             <div class="asked" id={{question.id}}>
                 <h3>{{question.number}} - {{question.section}}</h3>
                 <h4>{{question.question}}</h4>
-                <h4>{{question.answer}}</h4>
+                <h4 class="answer">{{question.answer}}</h4>
             </div>
             {% endfor %}
         </div>
     </div>
-
-
-
 
     <button class="back" onclick="window.location.href='{{link}}/';">
         Back

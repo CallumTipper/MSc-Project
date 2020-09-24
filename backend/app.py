@@ -10,7 +10,8 @@ ans = [{
 "question": "How should this work?",
 "answer": False,
 "student": 1,
-"tutor": False
+"tutor": False,
+"votes": 0
 },
 {  
 "id": 8888888,
@@ -19,7 +20,9 @@ ans = [{
 "question": "test andwer",
 "answer": "this question has been answered",
 "student": 1,
-"tutor": 5
+"tutor": 5,
+"votes": 1
+
 }]
 
 @app.route('/')
@@ -30,7 +33,10 @@ def index():
 @app.route('/student')
 def student():
     global ans
+    
+    ans = sorted(ans, key=lambda k: k['section'])
     ans = sorted(ans, key=lambda k: k['number'])
+    ans = sorted(ans, key=lambda k: k['votes'])
     return render_template("student.html", ans = ans)
 
 @app.route('/student', methods=['POST'])
@@ -53,17 +59,24 @@ def post_q():
         "question": question,
         "answer": answer,
         "student": student,
-        "tutor": tutor
+        "tutor": tutor,
+        "votes": 0
     }
 
     ans.append(q.copy())
+    
+    ans = sorted(ans, key=lambda k: k['section'])
     ans = sorted(ans, key=lambda k: k['number'])
+    ans = sorted(ans, key=lambda k: k['votes'])
     return render_template("student.html", ans = ans)
 
 @app.route('/tutor')
 def tutor():
     global ans
+    
+    ans = sorted(ans, key=lambda k: k['section'])
     ans = sorted(ans, key=lambda k: k['number'])
+    ans = sorted(ans, key=lambda k: k['votes'])
     return render_template("tutor.html", ans = ans)
 
 @app.route('/tutor', methods=['POST'])
@@ -77,7 +90,10 @@ def post_a():
         if i['id'] == q_id:
             i['answer'] = answer
     
+    
+    ans = sorted(ans, key=lambda k: k['section'])
     ans = sorted(ans, key=lambda k: k['number'])
+    ans = sorted(ans, key=lambda k: k['votes'])
     return render_template('tutor.html', ans = ans)
 
 if __name__ == "__main__":

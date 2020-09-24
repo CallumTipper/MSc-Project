@@ -25,3 +25,12 @@ function hideForm(){
     button.onclick=showForm
     button.innerHTML = "Add Question"
 }
+
+function vote(questionId){
+    console.log(questionId)
+    document.getElementById(questionId+"-flag").style.color= "red"
+    $.post( "ajax/test.html", function( data ) {
+        $( ".result" ).html( data );
+      });
+
+}

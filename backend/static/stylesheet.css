@@ -132,11 +132,38 @@ h3 {
 
 h4 {
     padding: 15px;
+    max-width: 100%;
 }
 
-h4:nth-child(3){
+
+
+.answer {
     background-color:#EEE2DC;
     border-radius: 5px;
     color: #837b7e;
 }
+
+/* voting flag */
+
+.fa-stack{
+    float: right;
+    top: -60px;
+    right: 5px;
+    padding: 5px;
+}
+
+.fa-stack:hover .fa-flag{
+    color: red;
+}
+
+.fa-flag{
+    text-align: center;
+    color: white;
+    padding: 2px;
+    /* position: absolute; */
+    /* top: 35px;
+    right: 25px; */
+    
+}
+
 
