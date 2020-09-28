@@ -36,39 +36,60 @@ def student():
     
     ans = sorted(ans, key=lambda k: k['section'])
     ans = sorted(ans, key=lambda k: k['number'])
-    ans = sorted(ans, key=lambda k: k['votes'])
+    ans = sorted(ans, key=lambda k: k['votes'], reverse=True)
     return render_template("student.html", ans = ans)
 
 @app.route('/student', methods=['POST'])
 def post_q():
     global ans
     global question_counter
-    unique_id = question_counter + 1
-    question_counter += 1
-    number = request.form.get('number')
-    section = request.form.get('section')
-    question = request.form.get('question')
-    answer = False
-    student = request.form.get('student')
-    tutor = False
 
-    q = {
-        "id": unique_id,
-        "number": number,
-        "section": section,
-        "question": question,
-        "answer": answer,
-        "student": student,
-        "tutor": tutor,
-        "votes": 0
-    }
+    postOrigin = request.form.get("post-origin")
 
-    ans.append(q.copy())
-    
-    ans = sorted(ans, key=lambda k: k['section'])
-    ans = sorted(ans, key=lambda k: k['number'])
-    ans = sorted(ans, key=lambda k: k['votes'])
-    return render_template("student.html", ans = ans)
+    if postOrigin == "post_q":
+        unique_id = question_counter + 1
+        question_counter += 1
+        number = request.form.get('number')
+        section = request.form.get('section')
+        question = request.form.get('question')
+        answer = False
+        student = request.form.get('student')
+        tutor = False
+
+        q = {
+            "id": unique_id,
+            "number": number,
+            "section": section,
+            "question": question,
+            "answer": answer,
+            "student": student,
+            "tutor": tutor,
+            "votes": 0
+        }
+
+        ans.append(q.copy())
+        
+        ans = sorted(ans, key=lambda k: k['section'])
+        ans = sorted(ans, key=lambda k: k['number'])
+        ans = sorted(ans, key=lambda k: k['votes'], reverse=True)
+        return render_template("question_submitted.html", ans = ans)
+
+    elif postOrigin == "flag":
+        q_id = request.form.get("questionId")
+        q_id = int(q_id)
+
+        for i in ans:
+            if i["id"] == q_id:
+                i["votes"] += 1
+
+        ans = sorted(ans, key=lambda k: k['section']) 
+        ans = sorted(ans, key=lambda k: k['number'])
+        ans = sorted(ans, key=lambda k: k['votes'], reverse=True)
+        return render_template("student.html", ans = ans)
+
+    else:
+        print(333)
+        return render_template("student.html", ans = ans)
 
 @app.route('/tutor')
 def tutor():
@@ -76,7 +97,7 @@ def tutor():
     
     ans = sorted(ans, key=lambda k: k['section'])
     ans = sorted(ans, key=lambda k: k['number'])
-    ans = sorted(ans, key=lambda k: k['votes'])
+    ans = sorted(ans, key=lambda k: k['votes'], reverse=True)
     return render_template("tutor.html", ans = ans)
 
 @app.route('/tutor', methods=['POST'])
@@ -93,7 +114,7 @@ def post_a():
     
     ans = sorted(ans, key=lambda k: k['section'])
     ans = sorted(ans, key=lambda k: k['number'])
-    ans = sorted(ans, key=lambda k: k['votes'])
+    ans = sorted(ans, key=lambda k: k['votes'], reverse=True)
     return render_template('tutor.html', ans = ans)
 
 if __name__ == "__main__":

@@ -29,8 +29,16 @@ function hideForm(){
 function vote(questionId){
     console.log(questionId)
     document.getElementById(questionId+"-flag").style.color= "red"
-    $.post( "ajax/test.html", function( data ) {
-        $( ".result" ).html( data );
-      });
+    // $.post( "/student", {"post-origin": "flag", "questionId": questionId});
+    // location.reload()
 
+    $.ajax({
+        type: "POST",
+        url: "/student",
+        data: {"post-origin": "flag", "questionId": questionId},
+        success: function() {   
+            location.reload();  
+        }
+    });
+    
 }
