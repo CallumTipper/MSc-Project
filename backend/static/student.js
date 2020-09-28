@@ -37,7 +37,10 @@ function vote(questionId){
         url: "/student",
         data: {"post-origin": "flag", "questionId": questionId},
         success: function() {   
-            location.reload();  
+            setTimeout(function(){
+                location.reload();
+            }, 300);
+              
         }
     });
     
