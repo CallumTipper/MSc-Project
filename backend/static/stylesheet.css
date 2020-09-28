@@ -166,4 +166,6 @@ h4 {
     
 }
 
-
+.fa-stack:hover .tutor-flag{
+    color: white;
+}

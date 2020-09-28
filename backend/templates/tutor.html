@@ -30,7 +30,14 @@
                     </div>
                     <button class="submit" type="submit">Submit</button>
                 </form>
-                <i class="fas fa-flag">{{question.votes}}</i>
+                <span class="fa-stack" >
+                    <!-- The icon that will wrap the number -->
+                    <span id="{{question.id}}-flag" class="fas fa-flag fa-lg fa-stack-2x tutor-flag"></span>
+                    <!-- a strong element with the custom content, in this case a number -->
+                    <strong class="fa-stack-1x" style="font-size:80%;">
+                        {{question.votes}}
+                    </strong>
+                </span>
             </div>
             {% endfor %}
 

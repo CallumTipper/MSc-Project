@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <h1 class="student-title">STUDENT: This is the studnet</h1>
+    <h1 class="student-title">STUDENT: This is the student</h1>
     <button class="submit" id="add-button" onclick="showForm()">
         Add Question
     </button>
@@ -28,6 +28,7 @@
         <div class="question">
             <label for="question">Question</label>
             <input type="text" id="question" name="question">
+            <input type="hidden" name="post-origin" value="post_q" />
         </div>
         <button class="submit" type="submit">Submit</button>
     </form>
