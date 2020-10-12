@@ -27,7 +27,7 @@ ans = [{
 
 @app.route('/')
 def index():
-    lnk = "https://workshop-faq.herokuapp.com"
+    lnk = ""
     return render_template("index.html", link=lnk)
 
 @app.route('/student')
