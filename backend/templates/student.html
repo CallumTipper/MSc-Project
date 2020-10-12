@@ -41,12 +41,12 @@
                 
                 <div class="question">
                     <h4>{{question.question}}</h4>
-                    <span class="fa-stack" onclick="vote({{question.id}})">
+                    <span class="fa-stack" onclick="flag({{question.id}})">
                         <!-- The icon that will wrap the number -->
                         <span id="{{question.id}}-flag" class="fas fa-flag fa-lg fa-stack-2x"></span>
                         <!-- a strong element with the custom content, in this case a number -->
                         <strong class="fa-stack-1x" style="font-size:80%;">
-                            {{question.votes}}
+                            {{question.flag}}
                         </strong>
                     </span>
                 </div>                
@@ -62,6 +62,22 @@
                 <h3>{{question.number}} - {{question.section}}</h3>
                 <h4>{{question.question}}</h4>
                 <h4 class="answer">{{question.answer}}</h4>
+                <span class="fa-stack" onclick="like({{question.id}})">
+                    <!-- The icon that will wrap the number -->
+                    <span id="{{question.id}}-like" class="fas fa-heart fa-lg fa-stack-2x"></span>
+                    <!-- a strong element with the custom content, in this case a number -->
+                    <strong class="fa-stack-1x" style="font-size:80%;">
+                        {{question.like}}
+                    </strong>
+                </span>
+                <span class="fa-stack" onclick="query({{question.id}})">
+                    <!-- The icon that will wrap the number -->
+                    <span id="{{question.id}}-query" class="fas fa-question fa-lg fa-stack-2x"></span>
+                    <!-- a strong element with the custom content, in this case a number -->
+                    <strong class="fa-stack-1x" style="font-size:80%;">
+                        {{question.query}}
+                    </strong>
+                </span>
             </div>
             {% endfor %}
         </div>

@@ -169,3 +169,39 @@ h4 {
 .fa-stack:hover .tutor-flag{
     color: white;
 }
+
+.fa-stack:hover .fa-heart{
+    color: red;
+}
+
+.fa-heart{
+    text-align: center;
+    color: pink;
+    padding: 2px;
+    /* position: absolute; */
+    /* top: 35px;
+    right: 25px; */
+    
+}
+
+.fa-stack:hover .tutor-heart{
+    color: white;
+}
+
+.fa-stack:hover .fa-question{
+    color: rgb(114, 141, 150);
+}
+
+.fa-question{
+    text-align: center;
+    color: lightblue;
+    padding: 2px;
+    /* position: absolute; */
+    /* top: 35px;
+    right: 25px; */
+    
+}
+
+.fa-stack:hover .tutor-question{
+    color: white;
+}

@@ -26,11 +26,9 @@ function hideForm(){
     button.innerHTML = "Add Question"
 }
 
-function vote(questionId){
+function flag(questionId){
     console.log(questionId)
     document.getElementById(questionId+"-flag").style.color= "red"
-    // $.post( "/student", {"post-origin": "flag", "questionId": questionId});
-    // location.reload()
 
     $.ajax({
         type: "POST",
@@ -42,6 +40,39 @@ function vote(questionId){
             }, 300);
               
         }
-    });
-    
+    });   
+}
+
+function like(questionId){
+    console.log(questionId)
+    document.getElementById(questionId+"-like").style.color= "red"
+
+    $.ajax({
+        type: "POST",
+        url: "/student",
+        data: {"post-origin": "like", "questionId": questionId},
+        success: function() {   
+            setTimeout(function(){
+                location.reload();
+            }, 300);
+              
+        }
+    });   
+}
+
+function query(questionId){
+    console.log(questionId)
+    document.getElementById(questionId+"-query").style.color= "red"
+
+    $.ajax({
+        type: "POST",
+        url: "/student",
+        data: {"post-origin": "query", "questionId": questionId},
+        success: function() {   
+            setTimeout(function(){
+                location.reload();
+            }, 300);
+              
+        }
+    });   
 }
