@@ -20,7 +20,7 @@ def writeData(data):
         json.dump(data, outfile)
 
 def sortQuestions(ans):
-    return sorted(ans, key=lambda k: k['flag', reverse=True])
+    return sorted(ans, key=lambda k: k['flag'], reverse=True)
 
 def sortAnswers(answers):
     a = sorted(answers, key=lambda k: k['section'])
