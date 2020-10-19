@@ -5,31 +5,7 @@ app = Flask(__name__)
 time = datetime.now()
 question_counter = 1
 
-ans = [{  
-"id": 99999,
-"number": "2",
-"section": "ii",
-"question": "How should this work?",
-"answer": False,
-"student": 1,
-"tutor": False,
-"flag": 0,
-"like": 0,
-"query": 0
-},
-{  
-"id": 8888888,
-"number": "3",
-"section": "ii",
-"question": "test andwer",
-"answer": "this question has been answered",
-"student": 1,
-"tutor": 5,
-"flag": 1,
-"like": 0,
-"query": 0
-}]
-
+ans = []
 
 def sortQuestions(answers):
     a = sorted(answers, key=lambda k: k['section'])
