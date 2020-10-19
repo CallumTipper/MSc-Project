@@ -32,9 +32,9 @@ ans = [{
 
 
 def sortQuestions(answers):
-    ans = sorted(answers, key=lambda k: k['section'])
-    ans = sorted(answers, key=lambda k: k['number'])
-    return ans
+    a = sorted(answers, key=lambda k: k['section'])
+    b = sorted(answers, key=lambda k: k['number'])
+    return b
 
 # App routes for basic page loading on navigation
 
