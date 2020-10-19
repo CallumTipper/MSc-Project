@@ -15,7 +15,7 @@
     <button class="submit" id="add-button" onclick="showForm()">
         Add Question
     </button>
-    <form id="Qform-hidden" method="POST" action="" style="display: none;">
+    <form id="Qform-hidden" autocomplete="off" method="POST" action="" style="display: none;">
         <h2>Ask a Question</h2>
         <div class="number">
             <label for="number">Question Number</label>
@@ -57,11 +57,16 @@
 
         <div class="ans">
             <h2>Answered Questions</h2>
-            {% for question in ans if question.answer %}
+            {% for question in answers if question.answer %}
             <div class="asked" id={{question.id}}>
                 <h3>{{question.number}} - {{question.section}}</h3>
                 <h4>{{question.question}}</h4>
                 <h4 class="answer">{{question.answer}}</h4>
+                {% if question.query >= 3 %}
+                <button onclick="window.location.href='https://teams.microsoft.com/l/chat/0/0?users={{question.tutor}}@nottingham.ac.uk';">
+                    Contact on Teams
+                  </button>
+                {% endif %}
                 <span class="fa-stack" onclick="like({{question.id}})">
                     <!-- The icon that will wrap the number -->
                     <span id="{{question.id}}-like" class="fas fa-heart fa-lg fa-stack-2x"></span>

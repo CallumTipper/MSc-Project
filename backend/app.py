@@ -3,10 +3,8 @@ from datetime import datetime
 app = Flask(__name__)
 
 time = datetime.now()
-
-
 question_counter = 1
-# y = json.dumps(x) 
+
 ans = [{  
 "id": 99999,
 "number": "2",
@@ -36,7 +34,6 @@ ans = [{
 def sortQuestions(answers):
     ans = sorted(answers, key=lambda k: k['section'])
     ans = sorted(answers, key=lambda k: k['number'])
-    ans = sorted(answers, key=lambda k: k['flag'], reverse=True)
     return ans
 
 # App routes for basic page loading on navigation
@@ -49,24 +46,16 @@ def index():
 @app.route('/student')
 def student():
     global ans
-    
-    # ans = sorted(ans, key=lambda k: k['section'])
-    # ans = sorted(ans, key=lambda k: k['number'])
-    # ans = sorted(ans, key=lambda k: k['flag'], reverse=True)
 
-    ans = sortQuestions(ans)
-    return render_template("student.html", ans = ans)
+    answers = sortQuestions(ans)
+    return render_template("student.html", ans = ans, answers = answers)
 
 @app.route('/tutor')
 def tutor():
     global ans
-    
-    # ans = sorted(ans, key=lambda k: k['section'])
-    # ans = sorted(ans, key=lambda k: k['number'])
-    # ans = sorted(ans, key=lambda k: k['flag'], reverse=True)
 
-    ans = sortQuestions(ans)
-    return render_template("tutor.html", ans = ans)
+    answers = sortQuestions(ans)
+    return render_template("tutor.html", ans = ans, answers = answers)
 
 
 
@@ -105,13 +94,9 @@ def post_q():
         print(time, "Question Added {}-{}: '{}' ".format(q["number"], q["section"], q["question"])) # For log purposes
 
         ans.append(q.copy())
-        
-        # ans = sorted(ans, key=lambda k: k['section'])
-        # ans = sorted(ans, key=lambda k: k['number'])
-        # ans = sorted(ans, key=lambda k: k['flag'], reverse=True)
 
-        ans = sortQuestions(ans)
-        return render_template("question_submitted.html", ans = ans)
+        answers = sortQuestions(ans)
+        return render_template("question_submitted.html", ans = ans, answers = answers)
 
     elif postOrigin == "flag":
         q_id = request.form.get("questionId")
@@ -123,12 +108,8 @@ def post_q():
 
         print(time, "Question {} Flagged".format(q_id)) # For log purposes
 
-        # ans = sorted(ans, key=lambda k: k['section']) 
-        # ans = sorted(ans, key=lambda k: k['number'])
-        # ans = sorted(ans, key=lambda k: k['flag'], reverse=True)
-
-        ans = sortQuestions(ans)
-        return render_template("student.html", ans = ans)
+        answers = sortQuestions(ans)
+        return render_template("student.html", ans = ans, answers = answers)
 
     elif postOrigin == "like":
         q_id = request.form.get("questionId")
@@ -140,12 +121,8 @@ def post_q():
         
         print(time, "Answer {} Liked".format(q_id)) # For log purposes
 
-        # ans = sorted(ans, key=lambda k: k['section']) 
-        # ans = sorted(ans, key=lambda k: k['number'])
-        # ans = sorted(ans, key=lambda k: k['like'], reverse=True)
-
-        ans = sortQuestions(ans)
-        return render_template("student.html", ans = ans)
+        answers = sortQuestions(ans)
+        return render_template("student.html", ans = ans, answers = answers)
 
     elif postOrigin == "query":
         q_id = request.form.get("questionId")
@@ -157,33 +134,27 @@ def post_q():
         
         print(time, "Answer {} Queried".format(q_id)) # For log purposes
 
-        # ans = sorted(ans, key=lambda k: k['section']) 
-        # ans = sorted(ans, key=lambda k: k['number'])
-        # ans = sorted(ans, key=lambda k: k['query'], reverse=True)
-
-        ans = sortQuestions(ans)
-        return render_template("student.html", ans = ans)
+        answers = sortQuestions(ans)
+        return render_template("student.html", ans = ans, answers = answers)
 
 
 @app.route('/tutor', methods=['POST'])
 def post_a():
     global ans
     answer = request.form.get('answer')
+    tutor = request.form.get('tutor')
     q_id = request.form.get('id')
     q_id = int(q_id)
-
+    
     for i in ans:
         if i['id'] == q_id:
             i['answer'] = answer
+            i['tutor'] = tutor
     
-    print(time, "Question {} Answered with '{}'".format(q_id, answer)) # For log purposes
-    
-    # ans = sorted(ans, key=lambda k: k['section'])
-    # ans = sorted(ans, key=lambda k: k['number'])
-    # ans = sorted(ans, key=lambda k: k['flag'], reverse=True)
+    print(time, "Question {} Answered with '{}' by {}".format(q_id, answer, tutor)) # For log purposes
 
-    ans = sortQuestions(ans)
-    return render_template('tutor.html', ans = ans)
+    answers = sortQuestions(ans)
+    return render_template('tutor.html', ans = ans, answers = answers)
 
 
 #  Run app

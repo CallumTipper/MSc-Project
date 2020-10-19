@@ -21,11 +21,13 @@
                 <button class="tutor-answer" id="add-button-{{question.id}}" onclick="showForm({{question.id}})">
                     Answer This Question
                 </button>
-                <form id="Aform-hidden-{{question.id}}" method="POST" action="" style="display: none;">
+                <form id="Aform-hidden-{{question.id}}" autocomplete="off" method="POST" action="" style="display: none;">
                     <h2>Add Answer</h2>
                     <div class="answer">
                         <label for="answer">Answer</label>
                         <input type="text" id="answer" name="answer">
+                        <input type="text" id="tutor" name="tutor">
+                        <label for="tutor">@nottingham.ac.uk</label>
                         <input type="hidden" name="id" value={{question.id}} />
                     </div>
                     <button class="submit" type="submit">Submit</button>
@@ -35,7 +37,7 @@
                     <span id="{{question.id}}-flag" class="fas fa-flag fa-lg fa-stack-2x tutor-flag"></span>
                     <!-- a strong element with the custom content, in this case a number -->
                     <strong class="fa-stack-1x" style="font-size:80%;">
-                        {{question.votes}}
+                        {{question.flag}}
                     </strong>
                 </span>
             </div>
@@ -44,11 +46,27 @@
         </div>
         <div class="ans">
             <h2>Answered Questions</h2>
-            {% for question in ans if question.answer %}
+            {% for question in answers if question.answer %}
             <div class="asked" id={{question.id}}>
                 <h3>{{question.number}} - {{question.section}}</h3>
                 <h4>{{question.question}}</h4>
                 <h4>{{question.answer}}</h4>
+                <span class="fa-stack" >
+                    <!-- The icon that will wrap the number -->
+                    <span id="{{question.id}}-like" class="fas fa-heart fa-lg fa-stack-2x tutor-heart"></span>
+                    <!-- a strong element with the custom content, in this case a number -->
+                    <strong class="fa-stack-1x" style="font-size:80%;">
+                        {{question.like}}
+                    </strong>
+                </span>
+                <span class="fa-stack">
+                    <!-- The icon that will wrap the number -->
+                    <span id="{{question.id}}-query" class="fas fa-question fa-lg fa-stack-2x tutor-question"></span>
+                    <!-- a strong element with the custom content, in this case a number -->
+                    <strong class="fa-stack-1x" style="font-size:80%;">
+                        {{question.query}}
+                    </strong>
+                </span>
             </div>
             {% endfor %}
         </div>

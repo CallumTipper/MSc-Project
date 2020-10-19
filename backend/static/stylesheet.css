@@ -185,7 +185,7 @@ h4 {
 }
 
 .fa-stack:hover .tutor-heart{
-    color: white;
+    color: pink;
 }
 
 .fa-stack:hover .fa-question{
@@ -203,5 +203,5 @@ h4 {
 }
 
 .fa-stack:hover .tutor-question{
-    color: white;
+    color: lightblue;
 }
