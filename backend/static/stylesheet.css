@@ -23,6 +23,18 @@ body {
     color: #123C69;
 }
 
+.tutor-instructions{
+    color: #123C69;
+}
+
+.student-instructions{
+    color: #AC3B61;
+}
+
+ul{
+    list-style:none;
+}
+
 /* Buttons */
 button {
     padding: 15px;
