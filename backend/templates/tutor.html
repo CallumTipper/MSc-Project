@@ -22,7 +22,8 @@
                 <button class="tutor-answer" id="add-button-{{question.id}}" onclick="showForm({{question.id}})">
                     Answer This Question
                 </button>
-                <form id="Aform-hidden-{{question.id}}" autocomplete="off" method="POST" action="" style="display: none;">
+                <form id="Aform-hidden-{{question.id}}" autocomplete="off" method="POST" action=""
+                    style="display: none;">
                     <h2>Add Answer</h2>
                     <div class="answer">
                         <label for="answer">Answer</label>
@@ -33,7 +34,7 @@
                     </div>
                     <button class="submit" type="submit">Submit</button>
                 </form>
-                <span class="fa-stack" >
+                <span class="fa-stack">
                     <!-- The icon that will wrap the number -->
                     <span id="{{question.id}}-flag" class="fas fa-flag fa-lg fa-stack-2x tutor-flag"></span>
                     <!-- a strong element with the custom content, in this case a number -->
@@ -52,7 +53,7 @@
                 <h3>{{question.number}} - {{question.section}}</h3>
                 <h4>{{question.question}}</h4>
                 <h4>{{question.answer}}</h4>
-                <span class="fa-stack" >
+                <span class="fa-stack">
                     <!-- The icon that will wrap the number -->
                     <span id="{{question.id}}-like" class="fas fa-heart fa-lg fa-stack-2x tutor-heart"></span>
                     <!-- a strong element with the custom content, in this case a number -->

@@ -34,9 +34,13 @@
         <button class="submit" type="submit">Submit</button>
     </form>
     <ul>
-        <li class="student-instructions"><i class="fas fa-flag fa-lg"></i>  "flag" questions that you want to be answered.</li>
-        <li class="student-instructions"><i class="fas fa-heart fa-lg"></i>  "like" answers that you found useful.</li>
-        <li class="student-instructions"><i class="fas fa-question fa-lg"></i>  "query" answers if you need more help - this will take you to Teams</li>
+        <li class="student-instructions"><i class="fas fa-flag fa-lg"></i> "Flag" questions that you want to be
+            answered.</li>
+        <li class="student-instructions"><i class="fas fa-heart fa-lg"></i> "Like" answers that you found useful.</li>
+        <li class="student-instructions"><i class="fas fa-question fa-lg"></i> "Query" answers if you need more help.
+        </li>
+        <li class="student-instructions"><i class="fas fa-users fa-lg"></i> Answers with 3+ "queries" will open a Teams
+            link for further discussion.</li>
     </ul>
     <div class="main">
         <div class="un-ans">
@@ -44,7 +48,7 @@
             {% for question in ans if not question.answer %}
             <div class="asked" id={{question.id}}>
                 <h3>{{question.number}} - {{question.section}}</h3>
-                
+
                 <div class="question">
                     <h4>{{question.question}}</h4>
                     <span class="fa-stack" onclick="flag({{question.id}})">
@@ -55,11 +59,11 @@
                             {{question.flag}}
                         </strong>
                     </span>
-                </div>                
+                </div>
             </div>
             {% endfor %}
         </div>
-            
+
 
         <div class="ans">
             <h2>Answered Questions</h2>
@@ -69,9 +73,10 @@
                 <h4>{{question.question}}</h4>
                 <h4 class="answer">{{question.answer}}</h4>
                 {% if question.query >= 3 %}
-                <button onclick="window.location.href='https://teams.microsoft.com/l/chat/0/0?users={{question.tutor}}@nottingham.ac.uk';">
-                    Contact on Teams
-                  </button>
+                <button
+                    onclick="window.location.href='https://teams.microsoft.com/l/chat/0/0?users={{question.tutor}}@nottingham.ac.uk';">
+                    <i class="fas fa-users fa-lg"></i> Go to Teams
+                </button>
                 {% endif %}
                 <span class="fa-stack" onclick="like({{question.id}})">
                     <!-- The icon that will wrap the number -->
