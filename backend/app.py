@@ -6,7 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 time = datetime.now()
 question_counter = 1
-q = 0
+
 
 
 # Auxilliary functions
